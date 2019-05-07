@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<div>
+  <a href="{% url 'home' %}"f> <img src="{% static 'logo.png' %}" width="250px"; height="200px";> </a>
+</div>
+
+<div class="font">
+<h1>제목: {{ review3.title3 }}</h1><br>
+<h2>내용: {{ review3.writer3 }}</h2><br>
+<h2>{{ review3.description3 }}</h2>
+<br>
+<br>
+
+<a href="{% url 'edit3' review3.pk %}" > <img src="{% static '수정.png' %}" width="100px;" height="40px;"></a> 
+<a href="{% url 'list3' %}"> <img src="{% static '뒤돌아.png' %}" width="100px;" height="40px;"> </a>
+<a href="#"  data-toggle="modal" data-target="#exampleModal"> <img src="{% static '삭제.png' %}" width="100px;" height="40px;"></a>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">정말 삭제하실겁니까?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">놉</button>
+            <form action="{% url 'delete3' review3.pk %}" method = "POST">
+                {% csrf_token %}
+                <input type="submit" value="삭제" class = "btn btn-primary">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+</div>
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
+
+<style type="text/css">
+
+  .font {
+     font-family: 'Do Hyeon', sans-serif;
+     margin: 200px;
+      text-align:center;
+      color:rgb(126,86,46);
+      background-color:white;
+      border-top: thick solid rgb(245,149,56);
+      border-right: thick solid rgb(245,149,56);
+     border-bottom: thick solid rgb(245,149,56); 
+      border-left: thick solid rgb(245,149,56);
+ }
+ body{
+    background-image: url({% static 'carrot.jpg' %});
+}
+
+</style>
+{% endblock %}

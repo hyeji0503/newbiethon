@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{%block content %}
+
+<html>
+ <head>
+   <!-- 합쳐지고 최소화된 최신 CSS -->
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+ <!-- 부가적인 테마 -->
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+ <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      background-image: url({% static 'carrot.jpg' %});
+    }
+    h1 { font-size : 70px;}
+    a {
+      font-size: 40px;
+    }
+    p {text-align: right;
+        padding-bottom:3rem;
+        padding-right:1.5rem;
+    }
+  </style>
+  
+ </head>
+ <body>
+   <div="logo">
+   <a href="{% url 'home' %}"><img src="{% static 'logo.png' %}" width="250px"; height="200px"></a>
+   </div>
+   <center>
+   <div>
+    </br></br>
+   <div="map">
+   <img src="{% static 'map_clothes.png' %}" width = "1000px" height="760px" >
+    </div>
+ </div>
+</center>
+ <p><a href="{% url 'list' %}"><img src="{% static 'review.png' %}" width=400px; height=150px;></a></p>
+ </body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+
+<div>
+  <a href="{% url 'home' %}"> <img src="{% static 'logo.png' %}" width="250px"; height="200px";> </a>
+</div>
+<form action = "{% url 'update3' review3.pk %}" method="POST">
+    {% csrf_token %}
+     <p><img src="{% static '후기작성.png' %}" width="500px;" height="170px;"></p> 
+    <div class="form-group">
+    <div class="form-group">
+        <label for="exampleFormControlInput1"><img src="{% static '제목.png' %}" width="100px;" height="33px;"></label>
+        <input type="text" name="title3" class="form-control" value="{{ review3.title3 }}">
+    </div>
+    
+    <div class="form-group">
+        <label for="formGroupExampleInput"><img src="{% static '작성자.png' %}" width="100px;" height="33px;"></label>
+        <input type="text" name="writer3" class="form-control" value="{{ review3.writer3 }}">
+    </div>
+    
+    
+    {% ifequal review3.radio3 'like' %}
+    <div class="custom-control custom-radio">
+      <input type="radio" id="customRadio1" name="is_like" class="custom-control-input" value="like" checked>
+      <label class="custom-control-label" for="customRadio1"><img src="{% static '좋아요.png' %}" width="80px;" height="26px;"></label>
+    </div>
+    
+    <div class="custom-control custom-radio">
+      <input type="radio" id="customRadio2" name="is_like" class="custom-control-input" value="dislike">
+      <label class="custom-control-label" for="customRadio2"><img src="{% static '싫어요.png' %}" width="80px;" height="26px;"></label>
+    </div>
+    {% else %}
+    <div class="custom-control custom-radio">
+      <input type="radio" id="customRadio1" name="is_like" class="custom-control-input" value="like">
+      <label class="custom-control-label" for="customRadio1"><img src="{% static '좋아요.png' %}" width="80px;" height="26px;"></label>
+    </div>
+    
+    <div class="custom-control custom-radio">
+      <input type="radio" id="customRadio2" name="is_like" class="custom-control-input" value="dislike" checked>
+      <label class="custom-control-label" for="customRadio2"><img src="{% static '싫어요.png' %}" width="80px;" height="26px;"></label>
+    </div>
+    {% endifequal %}
+    <br>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1"><img src="{% static '내용.png' %}" width="100px;" height="30px;"></label>
+        <textarea name="description3" class="form-control">{{ review3.description3 }}</textarea>
+    </div>
+    
+    
+    <div class="row">
+        <div class="col">
+          <a href="{% url 'list' %}"> <img src="{% static '뒤돌아.png' %}" width="100px;" height="40px;"> </a> <br><br>
+        </div>
+    <div class="col-6">
+    </div>
+    <div class="col">
+        <button id='btn' type='submit' style='position:fixed; top:-1000px;'></button>
+        <a href='javascript:$("#btn").click()' role='button'>
+            <img src="{% static '저장!.png' %}" width="100px;" height="40px;">
+        </a>
+    </div>
+    </div>
+    </center>    
+    </div>
+<style type="text/css">
+
+
+.container {
+    width:35rem;
+}
+
+.row{
+    padding-top:0.5rem;
+}
+
+.write{
+    background-color:white;
+}
+
+body{
+    background-image: url({% static 'carrot.jpg' %});
+}
+
+form{
+    padding-top: 2rem;
+}
+
+h1{
+    text-align:center;
+    padding:40px;
+}
+
+p {
+    text-align:center;
+}
+{% endblock %}
